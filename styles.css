@@ -17,6 +17,26 @@ body, input[text], button {
   font-family: Cambria, Georgia; 
 }
 
+table{
+  border-spacing: 0px;
+}
+
+tr  {
+  border-spacing: 0px;
+}
+
+div.red{
+  background-color: red;
+  width: inherit;
+  height: inherit;
+  float: left;
+}
+
+square{
+  width: 10px;
+  height: 10px;
+  float: left;
+}
 /* 
  * See https://github.com/angular/angular.io/blob/master/public/docs/_examples/styles.css
  * for the full set of master styles used by the documentation samples
