@@ -5,10 +5,10 @@ import {Component, Input} from 'angular2/core';
     styles: [`
     .div {
       height: 70px;
-      width: 7  0px;
+      width: 70px;
     }
   `],
-    template: `<div (click)="doStuff()" [style.color]='model'>{{model}}</div>`
+    template: `<div (click)="doStuff()" [style.background]='model'></div>`
 })
 export class Square {
 
