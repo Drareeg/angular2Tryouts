@@ -1,22 +1,27 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 
 @Component({
     selector: 'square',
-    template: '<div [class.red]="index==0"  ></div>'
+    styles: [`
+    .div {
+      height: 70px;
+      width: 7  0px;
+    }
+  `],
+    template: `<div (click)="doStuff()" [style.color]='model'>{{model}}</div>`
 })
 export class Square {
 
-    index:number = 0;
-    color:String;
-  
-    
-    public change() {
-        console.log("changed");
-        console.log(this.index);
-        this.index = (this.index+1) % 2;
-        this.color="green";
-    }
+    @Input() row:number;
+    @Input() column:number;
 
+
+    public model:string = 'red';
+
+    doStuff() {
+        this.model = 'green';
+        console.log('in square');
+    }
 
 
 }

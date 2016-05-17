@@ -4,41 +4,14 @@ import {Square} from "./Square.component";
 @Component({
     selector: 'my-app',
     template: `
-<input type="button" (click)="clicked()">
-<table>
-<tr *ngFor="#row of squares">
- <square *ngFor="#sq of row"></square>
-</tr>
-</table>`,
+<div *ngFor="#i of [1,2,3]">
+    <div *ngFor="#j of [1,2,3]">
+        <square #square [row]="i" [column]="j"></square>
+    </div>
+ </div>
+`,
     directives: [Square]
 })
 export class AppComponent {
-    squares = [[new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square],
-        [new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square, new Square]
-    ];
-
-    public changeSquare(row:number, col:number) {
-         this.squares[row][col].change();
-    }
-
-    clicked(){
-        console.log("clicked");
-        this.changeSquare(1,1);
-    }
 
 }
