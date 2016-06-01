@@ -1,4 +1,6 @@
 import {Component} from "angular2/core";
+declare var diffview:any;
+declare var diffview__report:any;
 
 @Component({
     selector: 'my-app',
@@ -6,7 +8,8 @@ import {Component} from "angular2/core";
       div {
       width : 10px;
       height: 10px;
-      }
+      },
+
    `],
     template: `
                <label>Input</label><br>
@@ -24,9 +27,10 @@ import {Component} from "angular2/core";
 
 
                <p [innerHTML]="resultHTML"></p>
-
+               <p>
                <label>Result</label><br>
                <textarea type="text" [(ngModel)]="resultText"rows="5"></textarea>
+               </p>
                `,
 })
 export class AppComponent {
@@ -49,7 +53,6 @@ export class AppComponent {
         this.resultText = resultInTheMaking;
 
 
-
     }
 
     private applyOneRegex(resultInTheMaking:string, regexEntry:string) {
@@ -60,13 +63,27 @@ export class AppComponent {
         var regexp:RegExp = new RegExp(replaceWhat, 'g');
 
 
-        console.log("replacing " + regexp + " with " + replaceWith + " in text " + this.inputText);
-        var result: string =  resultInTheMaking.replace(regexp, replaceWith);
+        console.log("replacing " + regexp + " with " + replaceWith + " in text " + resultInTheMaking);
+        var result:string = resultInTheMaking.replace(regexp, replaceWith);
 
-        this.resultHTML += '<textarea type="text" rows="5">' + result +  '</textarea>';
-
+        this.resultHTML += '<br><textarea type="text" rows="5">' + result + '</textarea><br>';
+        this.addDiff(resultInTheMaking, result);
 
         return result;
     }
 
+    private addDiff(origin:string, changed:string) {
+        var args:any = {
+            source: origin,
+            diff: changed,
+            lang: "text",
+            diffview: "sidebyside",
+            mode: "beautify",
+            jsscope: "html"
+        };
+        console.log(diffview);
+        var output = diffview(args);
+        //console.log(diffview__report());
+        this.resultHTML += "<br>"+output+"<br>";
+    }
 }
